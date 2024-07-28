@@ -1,0 +1,11 @@
+{
+    "Routes": [],
+    "DynamicRoutes": {
+        "PollingInterval": 10000
+    },
+    "Includes": [
+        "ocelot.auth.json",
+        "ocelot.mailbox.json",
+        "ocelot.email-service.json"
+    ]
+}
