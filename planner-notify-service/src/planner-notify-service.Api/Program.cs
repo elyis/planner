@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.WebSockets;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using planner_notify_service.App.Service;
@@ -39,9 +40,14 @@ void ConfigureServices(IServiceCollection services)
         setup.AddDefaultPolicy(options =>
         {
             options.AllowAnyHeader();
-            options.WithOrigins(corsAllowedOrigins);
+            options.WithOrigins(corsAllowedOrigins.Split(","));
             options.AllowAnyMethod();
         });
+    });
+
+    services.AddWebSockets(options =>
+    {
+        options.KeepAliveInterval = TimeSpan.FromSeconds(120);
     });
 
 
@@ -67,7 +73,6 @@ void ConfigureServices(IServiceCollection services)
 
 WebApplication ConfigureApplication(WebApplication app)
 {
-    app.UseCors();
     if (app.Environment.IsDevelopment())
     {
         app.UseDeveloperExceptionPage();
@@ -77,6 +82,7 @@ WebApplication ConfigureApplication(WebApplication app)
 
     app.UseRouting();
     app.UseWebSockets();
+    app.UseCors();
     app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();

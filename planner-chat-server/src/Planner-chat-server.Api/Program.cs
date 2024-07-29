@@ -56,7 +56,7 @@ void ConfigureServices(IServiceCollection services)
         setup.AddDefaultPolicy(options =>
         {
             options.AllowAnyHeader();
-            options.WithOrigins(corsAllowedOrigins);
+            options.WithOrigins(corsAllowedOrigins.Split(","));
             options.AllowAnyMethod();
         });
     });
@@ -95,6 +95,7 @@ void ConfigureServices(IServiceCollection services)
     services.AddHostedService(e => new RabbitMqService(
         e.GetRequiredService<IServiceScopeFactory>(),
         e.GetRequiredService<INotifyService>(),
+        e.GetRequiredService<IChatConnectionService>(),
         rabbitMqHostname,
         rabbitMqUsername,
         rabbitMqPassword,
@@ -108,7 +109,6 @@ void ConfigureServices(IServiceCollection services)
 
 WebApplication ConfigureApplication(WebApplication app)
 {
-    app.UseCors();
     if (app.Environment.IsDevelopment())
     {
         app.UseDeveloperExceptionPage();
@@ -118,6 +118,7 @@ WebApplication ConfigureApplication(WebApplication app)
 
     app.UseRouting();
     app.UseWebSockets();
+    app.UseCors();
     app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();

@@ -72,7 +72,7 @@ void ConfigureServices(IServiceCollection services)
         setup.AddDefaultPolicy(options =>
         {
             options.AllowAnyHeader();
-            options.WithOrigins(corsAllowedOrigins);
+            options.WithOrigins(corsAllowedOrigins.Split(","));
             options.AllowAnyMethod();
         });
     });
@@ -98,7 +98,6 @@ void ConfigureServices(IServiceCollection services)
 
 WebApplication ConfigureApplication(WebApplication app)
 {
-    app.UseCors();
     app.UseResponseCompression();
 
     if (app.Environment.IsDevelopment())
@@ -109,6 +108,7 @@ WebApplication ConfigureApplication(WebApplication app)
     }
 
     app.UseRouting();
+    app.UseCors();
     app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();

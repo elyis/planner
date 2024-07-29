@@ -77,7 +77,7 @@ void ConfigureServices(IServiceCollection services)
         setup.AddDefaultPolicy(options =>
         {
             options.AllowAnyHeader();
-            options.WithOrigins(corsAllowedOrigins);
+            options.WithOrigins(corsAllowedOrigins.Split(","));
             options.AllowAnyMethod();
         });
     });
@@ -182,7 +182,6 @@ void ConfigureServices(IServiceCollection services)
 
 void ConfigureMiddleware(WebApplication app)
 {
-    app.UseCors();
     if (app.Environment.IsDevelopment())
     {
         app.UseDeveloperExceptionPage();
@@ -191,6 +190,7 @@ void ConfigureMiddleware(WebApplication app)
     }
 
     app.UseRouting();
+    app.UseCors();
 
     app.UseAuthentication();
     app.UseSession();

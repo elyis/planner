@@ -3,9 +3,10 @@
     "DynamicRoutes": {
         "PollingInterval": 10000
     },
+    "GlobalConfiguration": {
+        "BaseUrl": "https://localhost:5000"
+    },
     "Includes": [
-        "ocelot.auth.json",
-        "ocelot.mailbox.json",
-        "ocelot.email-service.json"
+        "ocelot.routes.json"
     ]
 }

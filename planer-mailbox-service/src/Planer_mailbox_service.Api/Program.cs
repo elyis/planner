@@ -57,7 +57,7 @@ void ConfigureServices(IServiceCollection services)
         setup.AddDefaultPolicy(options =>
         {
             options.AllowAnyHeader();
-            options.WithOrigins(corsAllowedOrigins);
+            options.WithOrigins(corsAllowedOrigins.Split(","));
             options.AllowAnyMethod();
         });
     });

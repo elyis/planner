@@ -1,9 +1,12 @@
+using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Planner_chat_server.Core.Entities.Events;
+using Planner_chat_server.Core.Entities.Models;
+using Planner_chat_server.Core.Entities.Response;
 using Planner_chat_server.Core.Enums;
 using Planner_chat_server.Core.IRepository;
 using Planner_chat_server.Core.IService;
@@ -18,6 +21,7 @@ namespace Planner_chat_server.Infrastructure.Service
         private IModel _channel;
         private readonly IServiceScopeFactory _serviceFactory;
         private readonly INotifyService _notifyService;
+        private readonly IChatConnectionService _chatConnectionService;
         private readonly string _hostname;
         private readonly string _userName;
         private readonly string _password;
@@ -31,6 +35,7 @@ namespace Planner_chat_server.Infrastructure.Service
         public RabbitMqService(
             IServiceScopeFactory serviceFactory,
             INotifyService notifyService,
+            IChatConnectionService chatConnectionService,
             string hostname,
             string userName,
             string password,
@@ -52,6 +57,7 @@ namespace Planner_chat_server.Infrastructure.Service
 
             _serviceFactory = serviceFactory;
             _notifyService = notifyService;
+            _chatConnectionService = chatConnectionService;
 
             InitializeRabbitMQ();
         }
@@ -175,7 +181,25 @@ namespace Planner_chat_server.Infrastructure.Service
             if (chat == null)
                 return;
 
-            await chatRepository.AddMessageAsync(MessageType.File, chatAttachment.FileName, chat, chatAttachment.AccountId);
+            var chatMessage = await chatRepository.AddMessageAsync(MessageType.File, chatAttachment.FileName, chat, chatAttachment.AccountId);
+            if (chatMessage == null)
+                return;
+
+            var lobby = _chatConnectionService.GetConnections(chatAttachment.ChatId);
+            if (lobby == null)
+                return;
+
+            var sessions = lobby.ActiveSessions.Select(e => e.Value);
+            var account = lobby.AllChatUsers;
+
+            await SendMessage(
+                sessions,
+                chatMessage.ToMessageBody(),
+                WebSocketMessageType.Text,
+                account,
+                Enum.Parse<ChatType>(chat.Type),
+                chatAttachment.ChatId);
+
         }
 
         private async Task HandleChatImageMessageAsync(string message)
@@ -187,6 +211,79 @@ namespace Planner_chat_server.Infrastructure.Service
                 return;
 
             await chatRepository.UpdateChatImage(chatImage.ChatId, chatImage.Filename);
+        }
+
+
+        public async Task SendMessage(
+            IEnumerable<ChatSession> sessions,
+            MessageBody message,
+            WebSocketMessageType messageType,
+            IEnumerable<Guid> userIds,
+            ChatType chatType,
+            Guid chatId
+        )
+        {
+            var chatMessageBody = new ChatMessageInfo
+            {
+                ChatId = chatId,
+                ChatType = chatType,
+                Message = message
+            };
+
+            var connectedSessionIds = sessions.Select(e => e.SessionId);
+            var connectedAccountIds = sessions.GroupBy(e => e.AccountId).Select(e => e.Key);
+            var notConnectedAccountIds = userIds.Except(connectedAccountIds);
+
+            var str = JsonSerializer.Serialize(chatMessageBody);
+            var bytes = Encoding.UTF8.GetBytes(str);
+            var userSessionsDeliveryMessage = await SendMessageToConnectedUsers(sessions, bytes, messageType);
+            DeliverMessageToDisconnectedUsers(notConnectedAccountIds, userSessionsDeliveryMessage, bytes);
+        }
+
+        private async Task<IEnumerable<AccountSessions>> SendMessageToConnectedUsers(IEnumerable<ChatSession> sessions, byte[] bytes, WebSocketMessageType messageType)
+        {
+            var userSessionsDeliveryMessage = new List<AccountSessions>();
+
+            foreach (var groupedSessions in sessions.GroupBy(e => e.AccountId))
+            {
+                var sessionsReceivedMessage = new List<Guid>();
+                foreach (var session in groupedSessions)
+                {
+                    if (await SendMessageToSession(session.Ws, bytes, messageType))
+                        sessionsReceivedMessage.Add(session.SessionId);
+                }
+
+                if (sessionsReceivedMessage.Any())
+                    userSessionsDeliveryMessage.Add(new AccountSessions { AccountId = groupedSessions.Key, SessionIds = sessionsReceivedMessage });
+            }
+
+            return userSessionsDeliveryMessage;
+        }
+
+        private async Task<bool> SendMessageToSession(WebSocket webSocket, byte[] bytes, WebSocketMessageType messageType)
+        {
+            try
+            {
+                await webSocket.SendAsync(bytes, messageType, true, CancellationToken.None);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void DeliverMessageToDisconnectedUsers(IEnumerable<Guid> accountIds, IEnumerable<AccountSessions> accountSessions, byte[] bytes)
+        {
+            var messageSentToChatEvent = new MessageSentToChatEvent
+            {
+                AccountIds = accountIds,
+                AccountSessions = accountSessions,
+                Message = bytes
+            };
+
+            _notifyService.Publish(messageSentToChatEvent, NotifyPublishEvent.MessageSentToChat);
         }
 
         public override void Dispose()
