@@ -35,8 +35,8 @@
 
 - **EMAIL_SENDER_EMAIL** и **EMAIL_SENDER_PASSWORD**: Установите данные для отправки электронной почты. Получить пароль можно на странице [Google App Passwords](https://myaccount.google.com/apppasswords).
     ```plaintext
-    EMAIL_SENDER_EMAIL="elyi7367@gmail.com"
-    EMAIL_SENDER_PASSWORD="jtlb orgl ipav dhjf"
+    EMAIL_SENDER_EMAIL=""
+    EMAIL_SENDER_PASSWORD=""
     ```
 
 - **GOOGLE_CLIENT_ID** и **GOOGLE_CLIENT_SECRET**: Получите на странице [Google API Credentials](https://console.cloud.google.com/apis/credentials). Добавьте в Authorized redirect URIs: `https://localhost:8888/signin-google`.
@@ -47,7 +47,7 @@
 
 - **MAILRU_CLIENT_ID**, **MAILRU_CLIENT_SECRET**, и **MAILRU_REDIRECT_URI**: Получите на странице [Mail.ru Developer](https://o2.mail.ru/app#). Настройте `redirectUri` как `https://localhost:8888/signin-mail`.
     ```plaintext
-    MAILRU_CLIENT_ID="8fee6de4275d4808bf33a39494abbd4f"
-    MAILRU_CLIENT_SECRET="0dfe268d0fc74c2d8fa60ce3a0182512"
+    MAILRU_CLIENT_ID=""
+    MAILRU_CLIENT_SECRET=""
     MAILRU_REDIRECT_URI="https://localhost:8888/signin-mail"
     ```
