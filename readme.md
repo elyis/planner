@@ -51,3 +51,28 @@
     MAILRU_CLIENT_SECRET=""
     MAILRU_REDIRECT_URI="https://localhost:8888/signin-mail"
     ```
+
+## Swagger API Documentation
+
+Ниже представлены ссылки на Swagger документацию для каждого из сервисов. Swagger позволяет вам просматривать описание API, выполнять тестовые запросы и узнавать структуру данных, которые используются в сервисах.
+
+- **Auth Service**: Документация для сервиса аутентификации.
+  - `/auth/swagger`
+
+- **File Service**: Документация для сервиса работы с файлами.
+  - `/file/swagger`
+
+- **Notification Service**: Документация для сервиса уведомлений.
+  - `/notify/swagger`
+
+- **Mailbox Service**: Документация для сервиса почтовых ящиков.
+  - `/mailbox/swagger`
+
+- **Email Service**: Документация для сервиса электронной почты.
+  - `/email/swagger`
+
+- **Chat Service**: Документация для сервиса чата.
+  - `/chat/swagger`
+
+- **Task Service**: Документация для сервиса задач.
+  - `/task/swagger`
