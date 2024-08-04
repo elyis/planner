@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
@@ -107,6 +108,17 @@ void ConfigureServices(IServiceCollection services)
                     options.Scope.Add("https://mail.google.com");
                     options.SaveTokens = true;
                     options.AccessType = "offline";
+
+                    options.CallbackPath = new PathString("/signin-google");
+                    options.Events = new OAuthEvents
+                    {
+                        OnRedirectToAuthorizationEndpoint = context =>
+                        {
+                            var redirectUri = "http://localhost:8888/signin-google"; // Обратите внимание на http
+                            context.Response.Redirect(context.RedirectUri.Replace("https://localhost:8888/signin-google", redirectUri));
+                            return Task.CompletedTask;
+                        }
+                    };
                 })
         .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
         {
