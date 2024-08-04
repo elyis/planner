@@ -41,11 +41,12 @@
     EMAIL_SENDER_PASSWORD=""
     ```
 
-- **GOOGLE_CLIENT_ID** и **GOOGLE_CLIENT_SECRET**: Получите на странице [Google API Credentials](https://console.cloud.google.com/apis/credentials). Добавьте в Authorized redirect URIs: `https://localhost:8888/signin-google`.
+- **GOOGLE_CLIENT_ID** и **GOOGLE_CLIENT_SECRET**: Получите на странице [Google API Credentials](https://console.cloud.google.com/apis/credentials). Добавьте в Authorized redirect URIs: `https://localhost:8888/signin-google` или `https://busfy.ru/signin-google`.
     ```plaintext
     GOOGLE_CLIENT_ID=""
     GOOGLE_CLIENT_SECRET=""
     ```
+  ![Google API Scopes](scopes.png)
 
 - **MAILRU_CLIENT_ID**, **MAILRU_CLIENT_SECRET**, и **MAILRU_REDIRECT_URI**: Получите на странице [Mail.ru Developer](https://o2.mail.ru/app#). Настройте `redirectUri` как `https://localhost:8888/signin-mail`.
     ```plaintext
@@ -53,6 +54,7 @@
     MAILRU_CLIENT_SECRET=""
     MAILRU_REDIRECT_URI="https://localhost:8888/signin-mail"
     ```
+![Mail.ru Developer](mailru.png)
 
 ## Swagger API Documentation
 
