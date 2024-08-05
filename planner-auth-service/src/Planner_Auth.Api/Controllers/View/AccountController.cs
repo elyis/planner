@@ -135,7 +135,7 @@ namespace Planner_Auth.Api.Controllers.View
             if (userInfo == null)
                 return BadRequest("Получить профиль пользователя не получается");
 
-            var mailCreadentials = await _authService.CreateMailCredentials(userInfo.Email, tokenPairResponse.AccessToken, tokenPairResponse.RefreshToken, EmailProvider.Gmail);
+            var mailCreadentials = await _authService.CreateMailCredentials(userInfo.Email, tokenPairResponse.AccessToken, tokenPairResponse.RefreshToken, EmailProvider.MailRu);
             var signInBody = new SignInBody
             {
                 Identifier = userInfo.Email,
@@ -145,7 +145,7 @@ namespace Planner_Auth.Api.Controllers.View
                 DeviceTypeId = Enum.Parse<DeviceTypeId>(deviceTypeId)
             };
 
-            var signInResponse = await _authService.SignIn(signInBody, AuthenticationProvider.Google);
+            var signInResponse = await _authService.SignIn(signInBody, AuthenticationProvider.MailRu);
 
             if (signInResponse.IsSuccess)
                 return StatusCode((int)signInResponse.StatusCode, signInResponse.Body);
@@ -163,10 +163,10 @@ namespace Planner_Auth.Api.Controllers.View
                 DeviceTypeId = Enum.Parse<DeviceTypeId>(deviceTypeId)
             };
 
-            var response = await _authService.SignUp(signUpBody, AccountRole.User.ToString(), AuthenticationProvider.Google);
+            var response = await _authService.SignUp(signUpBody, AccountRole.User.ToString(), AuthenticationProvider.MailRu);
             if (response.IsSuccess)
             {
-                await _authService.CreateMailCredentials(userInfo.Email, tokenPairResponse.AccessToken, tokenPairResponse.RefreshToken, EmailProvider.Gmail);
+                await _authService.CreateMailCredentials(userInfo.Email, tokenPairResponse.AccessToken, tokenPairResponse.RefreshToken, EmailProvider.MailRu);
                 return StatusCode((int)response.StatusCode, response.Body);
             }
             return StatusCode((int)response.StatusCode, response.Errors);
