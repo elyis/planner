@@ -61,6 +61,11 @@ services:
       file: services/task-board-db.yaml
       service: planner-content-db
 
+  planner-gateway-service:
+    extends:
+      file: services/gateway.yaml
+      service: planner-gateway-service
+
 volumes:
   planner-auth-data:
   planner-content-data:

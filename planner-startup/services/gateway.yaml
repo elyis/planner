@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  planner-gateway-service:
+    image: planner-gateway-service
+    restart: always
+    ports:
+      - "8080:80"

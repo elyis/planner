@@ -1,10 +1,17 @@
 # CaesarServer
 
+CaesarServer - API для планировщика задач по типу Trello.
+
+### Интеграция с сервисами
+
+- Gmail, Mail.ru, Google для работы с электронной почтой.
+- Google, Mail.ru для авторизации.
+
 ## Installation
 
 Для установки проекта необходимо выполнить следующие шаги:
 
-1. Перейти в каждый проект, кроме `startup` и `gateway`, и выполнить скрипт `build.sh`:
+1. Перейти в каждый проект, кроме `startup`, и выполнить скрипт `build.sh`:
     ```bash
     ./build.sh
     ```
@@ -13,12 +20,6 @@
     ```bash
     cd ./planner-startup/
     docker compose up -d
-    ```
-
-3. Для запуска шлюза перейти в директорию `planner-gateway-service` и выполнить скрипт `start.sh`:
-    ```bash
-    cd ./planner-gateway-service/
-    ./start.sh
     ```
 
 ## Environment setup (.env)
@@ -80,3 +81,32 @@
 
 - **Task Service**: Документация для сервиса задач.
   - `/task/swagger`
+
+
+# Архитектура проекта
+
+## Схема архитектуры
+
+### Проект состоит из нескольких микросервисов, каждый из которых выполняет свою функцию:
+
+- Auth Service - управление пользователями и авторизация.
+- File Service - хранение и обработка файлов.
+- Notification Service - отправка уведомлений пользователям.
+- Mailbox Service - обработка электронной почты.
+- Email Service - служба отправки электронных писем.
+- Chat Service - модуль чата.
+- Task Service - планировщик задач.
+
+### Технологии
+
+- Backend: .NET Core
+- Database: PostgreSQL
+- Containerization: Docker, Docker Compose
+- Message Broker: RabbitMQ
+- Caching: Redis
+- Authentication: JWT
+- Authorization: OAuth 2.0
+- Email: Mail.ru, Google
+- File Storage: MinIO
+- Chat: WebSocket
+

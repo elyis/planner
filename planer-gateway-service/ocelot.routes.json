@@ -6,7 +6,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -20,7 +20,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -34,7 +34,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -48,7 +48,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -62,7 +62,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -76,7 +76,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -90,7 +90,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -104,7 +104,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -118,7 +118,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -132,7 +132,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -146,7 +146,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -160,7 +160,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -174,7 +174,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -188,7 +188,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -202,7 +202,7 @@
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
+                    "Host": "planner-auth-service",
                     "Port": 8888
                 }
             ],
@@ -218,8 +218,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5000
+                    "Host": "planer-email-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/message/email",
@@ -231,8 +231,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5000
+                    "Host": "planer-email-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/email/swagger/{everything}",
@@ -245,8 +245,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5001
+                    "Host": "planer-mailbox-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/emails",
@@ -258,8 +258,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5001
+                    "Host": "planer-mailbox-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/email",
@@ -271,8 +271,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 5001
+                    "Host": "planer-mailbox-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/mailbox/swagger/{everything}",
@@ -286,8 +286,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8091
+                    "Host": "planner-file-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/file/swagger/{everything}",
@@ -299,8 +299,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8091
+                    "Host": "planner-file-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/chat/upload",
@@ -312,8 +312,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8091
+                    "Host": "planner-file-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/chatIcon/upload",
@@ -325,8 +325,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8091
+                    "Host": "planner-file-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/chat/download/{filename}",
@@ -338,8 +338,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8091
+                    "Host": "planner-file-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/chatIcon/download/{filename}",
@@ -351,8 +351,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8091
+                    "Host": "planner-file-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/profile/upload",
@@ -364,8 +364,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8091
+                    "Host": "planner-file-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/profile/download/{filename}",
@@ -378,8 +378,8 @@
             "DownstreamScheme": "ws",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8092
+                    "Host": "planner-notify-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/main",
@@ -391,8 +391,8 @@
             "DownstreamScheme": "ws",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8092
+                    "Host": "planner-notify-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/notify",
@@ -405,8 +405,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8092
+                    "Host": "planner-notify-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/notify/swagger/{everything}",
@@ -419,8 +419,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/board",
@@ -432,8 +432,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/boards",
@@ -445,8 +445,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/board/columns",
@@ -458,8 +458,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/board/members",
@@ -471,8 +471,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/board/member",
@@ -484,8 +484,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/board/column",
@@ -497,8 +497,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/draft",
@@ -510,8 +510,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/draft/{draftId}",
@@ -523,8 +523,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/draft",
@@ -536,8 +536,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/task",
@@ -549,8 +549,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/deleted-tasks",
@@ -562,8 +562,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/task/swagger/{everything}",
@@ -575,8 +575,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/tasks",
@@ -588,8 +588,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/task/performers",
@@ -601,8 +601,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8889
+                    "Host": "planner-task-board-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/task/column",
@@ -616,8 +616,8 @@
             "DownstreamScheme": "ws",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8090
+                    "Host": "planner-chat-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/chat",
@@ -629,8 +629,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8090
+                    "Host": "planner-chat-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/chat/swagger/{everything}",
@@ -642,8 +642,8 @@
             "DownstreamScheme": "ws",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8090
+                    "Host": "planner-chat-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/taskChat",
@@ -655,8 +655,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8090
+                    "Host": "planner-chat-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/chats",
@@ -668,8 +668,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8090
+                    "Host": "planner-chat-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/chat",
@@ -681,8 +681,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8090
+                    "Host": "planner-chat-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/chat/messages",
@@ -694,8 +694,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8090
+                    "Host": "planner-chat-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/chat/messages",
@@ -707,8 +707,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8090
+                    "Host": "planner-chat-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/taskChat/messages",
@@ -720,8 +720,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "localhost",
-                    "Port": 8090
+                    "Host": "planner-chat-service",
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/taskChats",

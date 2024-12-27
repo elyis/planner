@@ -36,6 +36,8 @@ builder.Logging.SetMinimumLevel(LogLevel.Error);
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+app.UseDefaultFiles();
+app.UseStaticFiles();
 app.UseCors("AllowAllOrigins");
 
 app.UseRouting();
