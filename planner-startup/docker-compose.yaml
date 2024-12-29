@@ -44,7 +44,7 @@ services:
   planner-rabbitmq-service:
     extends:
       file: services/rabbitmq-service.yaml
-      service: planner-rabbitmq
+      service: planner-rabbitmq-service
 
   planner-file-service:
     extends:

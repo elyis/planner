@@ -1,13 +1,13 @@
 version: '3.8'
 
 services:
-  planner-rabbitmq:
+  planner-rabbitmq-service:
     image: rabbitmq:management
     restart: always
     ports:
       - "5676:5672"
       - "15676:15672"
-    hostname: planner-rabbitmq
+    hostname: planner-rabbitmq-service
     healthcheck:
       test: rabbitmq-diagnostics -q ping
       interval: 30s
