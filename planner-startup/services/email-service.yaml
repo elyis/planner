@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  planer-email-service:
+  planner-email-service:
     image: planer-email-service
     restart: always
     ports:
-      - "5000:80"
+      - "8902:80"
     environment:
       - JWT_AUTH_SECRET=${JWT_AUTH_SECRET}
       - JWT_AUTH_ISSUER=${JWT_AUTH_ISSUER}

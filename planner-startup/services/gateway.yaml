@@ -5,4 +5,4 @@ services:
     image: planner-gateway-service
     restart: always
     ports:
-      - "8080:80"
+      - "8904:80"

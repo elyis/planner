@@ -1,15 +1,15 @@
 version: '3.8'
 
 services:
-  planer-email-service:
+  planner-email-service:
     extends:
       file: services/email-service.yaml
-      service: planer-email-service
+      service: planner-email-service
 
-  planer-mailbox-service:
+  planner-mailbox-service:
     extends:
       file: services/mailbox-service.yaml
-      service: planer-mailbox-service
+      service: planner-mailbox-service
   
   planner-mail-credentials-db:
     extends:
@@ -44,7 +44,7 @@ services:
   planner-rabbitmq-service:
     extends:
       file: services/rabbitmq-service.yaml
-      service: rabbitmq
+      service: planner-rabbitmq
 
   planner-file-service:
     extends:

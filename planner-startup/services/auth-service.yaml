@@ -5,7 +5,7 @@ services:
     image: planner-auth
     restart: always
     ports:
-      - "8888:8888"
+      - "8900:8888"
     depends_on:
       planner-auth-db:
         condition: service_started

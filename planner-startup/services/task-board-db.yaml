@@ -8,6 +8,6 @@ services:
       - POSTGRES_PASSWORD=${CONTENT_DB_PASSWORD}
       - POSTGRES_DB=${CONTENT_DB_DATABASE}
     ports:
-      - "5436:5432"
+      - "5447:5432"
     volumes:
       - planner-content-data:/var/lib/postgresql/data

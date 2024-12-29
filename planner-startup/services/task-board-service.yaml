@@ -5,7 +5,7 @@ services:
     image: planner-task-board
     restart: always
     ports:
-      - "8889:80"
+      - "8907:80"
     depends_on:
       planner-task-board-db:
         condition: service_started

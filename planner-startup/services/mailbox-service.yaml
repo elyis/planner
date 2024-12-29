@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  planer-mailbox-service:
+  planner-mailbox-service:
     image: planer-mailbox-service
     restart: always
     ports:
-      - "5001:80"
+      - "8905:80"
     depends_on:
       planner-mail-credentials-db:
         condition: service_started
